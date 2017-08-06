@@ -3,9 +3,15 @@
 #include <boost/asio.hpp>
 #include <server.hpp>
 #include <boost/program_options.hpp>
+#include <stdlib.h>
 
 int main(int argc, char* argv[])
 {
+	if (daemon(0, 0) == -1)
+	{
+		std::cout << "daemon error" << std::endl;
+		return 1;
+	}
 	try
 	{
 		namespace po = boost::program_options;
