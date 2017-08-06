@@ -7,11 +7,6 @@
 
 int main(int argc, char* argv[])
 {
-	if (daemon(0, 0) == -1)
-	{
-		std::cout << "daemon error" << std::endl;
-		return 1;
-	}
 	try
 	{
 		namespace po = boost::program_options;
@@ -32,6 +27,11 @@ int main(int argc, char* argv[])
 			return 0;
 		}
 		
+		if (daemon(0, 0) == -1)
+		{
+			std::cout << "daemon error" << std::endl;
+			return 1;
+		}
 
 		// Initialise the server.
 		http::server::server s(
@@ -46,6 +46,7 @@ int main(int argc, char* argv[])
 	catch (std::exception& e)
 	{
 		std::cerr << "exception: " << e.what() << "\n";
+		return 1;
 	}
 
 	return 0;
