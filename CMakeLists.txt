@@ -44,4 +44,5 @@ ADD_EXECUTABLE(final ${SOURCES} ${HEADERS})
 TARGET_LINK_LIBRARIES(
 	final
 	${Boost_LIBRARIES}
+	pthread
 )
