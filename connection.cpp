@@ -28,8 +28,9 @@ void connection::stop()
 void connection::do_read()
 {
 	auto self(shared_from_this());
+	boost::asio::buffer tmp(buffer_);
 	socket_.async_read_some(
-		( boost::asio::buffer(buffer_) ),
+		tmp,
 		[this, self](
 			boost::system::error_code ec,
 			std::size_t bytes_transferred
