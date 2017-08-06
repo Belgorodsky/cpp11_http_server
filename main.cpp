@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 		po::options_description desc("Available options");
 		desc.add_options()
 			("help", "help message")
-			("host,h", po::value<std::string>()->required(), "http server address")
+			("host,h", po::value<std::string>()->default_value("127.0.0.1"), "http server address")
 			("port,p", po::value<std::string>()->required(), "http server port")
 			("directory,d", po::value<std::string>()->required(), "root directory of server")
 		;
